@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+{% load django_bootstrap5 %}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>custoMade</title>
+        <meta name="description" content="(現在準備中)" />
+        <link rel="icon" href="" sizes="16x16" type="image/png" />
+        <link rel="apple-touch-icon-precomposed" href="" />
+        {% comment %} <link rel="stylesheet" href="{% static 'accounts/styles.css' %}"> {% endcomment %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+        {% block extraheader %}{% endblock %}
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand flex-md-row navbar-dark bg-dark">
+            <div class="container justify-content-between">
+
+                <a href="{% url 'accounts:login' %}" class="navbar-brand">custoMade</a>
+
+                <ul class="navbar-nav mr-md-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:login' %}">login</a>
+                    </li>
+                    {% comment %} <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:register' %}">sign up</a>
+                    </li> {% endcomment %}
+                </ul>
+
+            </div>
+        </nav>
+
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+    </body>
+</html>

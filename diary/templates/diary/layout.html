@@ -3,12 +3,27 @@
 
 <html lang="en">
     <head>
-        <title>Tasks</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>custoMade</title>
+        <meta name="description" content="(現在準備中)" />
+        <link rel="icon" href="" sizes="16x16" type="image/png" />
+        <link rel="apple-touch-icon-precomposed" href="" />
         <link rel="stylesheet" href="{% static 'diary/styles.css' %}">
+        {% block extraheader %}{% endblock %}
     </head>
 
     <body>
-        {% block body %}
-        {% endblock %}
+        {% comment %} navでbootstrapを使うかどうかは検討中 {% endcomment %}
+        <nav>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'accounts:logout' %}">logout</a></li>
+            {% comment %} ログインしてない状態は想定していない {% endcomment %}
+            {% endif %}
+        </nav>
+
+        <main>
+            {% block main %}{% endblock %}
+        </main>
     </body>
 </html>
