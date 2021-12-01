@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 {% load static %}
 {% load django_bootstrap5 %}
+{% load sass_tags %}
 
-<html lang="en">
+<html lang="ja">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -10,7 +11,11 @@
         <meta name="description" content="(現在準備中)" />
         <link rel="icon" href="" sizes="16x16" type="image/png" />
         <link rel="apple-touch-icon-precomposed" href="" />
+        <link rel='stylesheet' href='https://unpkg.com/ress/dist/ress.min.css'>
+        <link rel="stylesheet" href="https://use.typekit.net/kqm8xlk.css">
+        <link rel="stylesheet" href="https://use.typekit.net/kqm8xlk.css">
         {% comment %} <link rel="stylesheet" href="{% static 'accounts/styles.css' %}"> {% endcomment %}
+        <link rel="stylesheet" href="{% sass_src 'accounts/styles.scss' %}">
         {% bootstrap_css %}
         {% bootstrap_javascript %}
         {% block extraheader %}{% endblock %}

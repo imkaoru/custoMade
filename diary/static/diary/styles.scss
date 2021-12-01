@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+// イメージ: 青と白の世界
+$baseColor: #FDFDFB;
+$mainColor: #67A5DA;
+$accentColor: #FBE4E2;
+
+
+html {
+    font-size: 62.5%;
+    font-family: futura-pt, sans-serif;
+}
+
+body {
+    font-size: 1.4rem;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
