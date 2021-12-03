@@ -1,0 +1,74 @@
+{% extends "diary/layout.html" %}
+
+{% block extraheader %}{% endblock %}
+
+{% block main %}
+    <h2>Check pronunciation!</h2>
+
+    <div class="items">
+        {% comment %} 以下for文で回す {% endcomment %}
+        <div class="item">
+            <div class="wrapper">
+                <div class="card">
+                    <object data="../../static/diary/img/default.png" type="image/png">
+                        <img src="" alt="日記の写真">
+                    </object>
+
+                    <div class="card-content">
+                        <p class="card-title">タイトル</p>
+                        <p class="card-date"><small>12/31/2021</small></p>
+                        <p class="card-text">
+                            ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+                            ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+                            ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+                        </p>
+
+                        <div class="function-box">
+                            <ul>
+                                <li><i class="fas fa-microphone fa-2x"></i></li>
+                                <li><i class="fas fa-volume-up fa-2x"></i></li>
+                            </ul>
+
+                            <div>
+                                <label>
+                                    <input type="checkbox" name='completed' class="checkbox">
+                                    <i class="far fa-square fa-2x"></i>
+                                    <i class="far fa-check-square fa-2x"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <p>ここはアコーディオンエリアです。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> {% comment %} items {% endcomment %}
+
+
+
+    {% comment %} {% if snippets %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>投稿者</th>
+            <th>投稿日</th>
+            <th>タイトル</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for snippet in snippets %}
+        <tr>
+            <th>{{ snippet.created_by.username }}</th>
+            <th>{{ snippet.created_at }}</th>
+            <th><a href="{% url 'snippet_detail' snippet.id %}">{{ snippet.title }}</a></th>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>スニペットはまだ投稿されていません。</p>
+    {% endif %} {% endcomment %}
+{% endblock %}

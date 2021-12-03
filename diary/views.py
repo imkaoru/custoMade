@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 
 import datetime
 
+from diary.models import Diary
+
 
 # def index(request):
 #     now = datetime.datetime.now()
@@ -14,3 +16,9 @@ import datetime
 
 def index(request):
     return render(request, "diary/index.html")
+
+
+def myDiary(request):
+    diaries = Diary.objects.all()
+    context = {"diaries": diaries}
+    return render(request, "diary/my_diary.html", context)

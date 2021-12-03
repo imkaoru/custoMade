@@ -14,30 +14,31 @@
         <link rel='stylesheet' href='https://unpkg.com/ress/dist/ress.min.css'>
         <link rel="stylesheet" href="https://use.typekit.net/kqm8xlk.css">
         <link rel="stylesheet" href="https://use.typekit.net/kqm8xlk.css">
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
         {% comment %} <link rel="stylesheet" href="{% static 'accounts/styles.css' %}"> {% endcomment %}
-        <link rel="stylesheet" href="{% sass_src 'accounts/styles.scss' %}">
+        <link rel="stylesheet" href="{% sass_src 'accounts/sass/styles.scss' %}">
         {% bootstrap_css %}
         {% bootstrap_javascript %}
         {% block extraheader %}{% endblock %}
     </head>
 
     <body>
-        <nav class="navbar navbar-expand flex-md-row navbar-dark bg-dark">
-            <div class="container justify-content-between">
+        <header>
+            <nav class="navbar navbar-expand flex-md-row navbar-dark bg-dark">
+                <div class="container justify-content-between">
+                    <a href="{% url 'accounts:login' %}" class="navbar-brand">custoMade</a>
 
-                <a href="{% url 'accounts:login' %}" class="navbar-brand">custoMade</a>
-
-                <ul class="navbar-nav mr-md-2">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts:login' %}">login</a>
-                    </li>
-                    {% comment %} <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts:register' %}">sign up</a>
-                    </li> {% endcomment %}
-                </ul>
-
-            </div>
-        </nav>
+                    <ul class="navbar-nav mr-md-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:login' %}">login</a>
+                        </li>
+                        {% comment %} <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:register' %}">sign up</a>
+                        </li> {% endcomment %}
+                    </ul>
+                </div>
+            </nav>
+        </header>
 
         <main>
             {% block main %}{% endblock %}

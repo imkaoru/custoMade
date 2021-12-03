@@ -5,10 +5,15 @@ $baseColor: #FDFDFB;
 $mainColor: #67A5DA;
 $accentColor: #FBE4E2;
 
+$fontColor: #707070;
+$diactiveColor: #909090;
+$lineColor: #e0e0e0;
+
 
 html {
     font-size: 62.5%;
     font-family: futura-pt, sans-serif;
+    color: $fontColor;
 }
 
 body {
@@ -17,4 +22,18 @@ body {
 
 *, *::before, *::after {
     box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: $diactiveColor;
+    margin: 0 10px;
+
+    &:hover {
+        color: $fontColor;
+    }
+}
+
+ul {
+    list-style-type: none;
 }

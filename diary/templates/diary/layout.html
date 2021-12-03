@@ -13,19 +13,22 @@
         <link rel='stylesheet' href='https://unpkg.com/ress/dist/ress.min.css'>
         <link rel="stylesheet" href="https://use.typekit.net/kqm8xlk.css">
         <link rel="stylesheet" href="https://use.typekit.net/kqm8xlk.css">
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
         {% comment %} <link rel="stylesheet" href="{% static 'diary/styles.css' %}"> {% endcomment %}
-        <link rel="stylesheet" href="{% sass_src 'diary/styles.scss' %}">
+        <link rel="stylesheet" href="{% sass_src 'diary/sass/styles.scss' %}">
         {% block extraheader %}{% endblock %}
     </head>
 
     <body>
         {% comment %} navでbootstrapを使うかどうかは検討中 {% endcomment %}
-        <nav>
-            {% if user.is_authenticated %}
-                <li><a href="{% url 'accounts:logout' %}">logout</a></li>
-            {% comment %} ログインしてない状態は想定していない {% endcomment %}
-            {% endif %}
-        </nav>
+        <header>
+            <nav>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'accounts:logout' %}">logout</a></li>
+                {% comment %} ログインしてない状態は想定していない {% endcomment %}
+                {% endif %}
+            </nav>
+        </header>
 
         <main>
             {% block main %}{% endblock %}

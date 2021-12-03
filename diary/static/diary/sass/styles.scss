@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+// イメージ: 青と白の世界
+$baseColor: #FDFDFB;
+$mainColor: #67A5DA;
+$accentColor: #FBE4E2;
+
+$fontColor: #707070;
+$diactiveColor: #909090;
+$lineColor: #e0e0e0;
+
+
+html {
+    font-size: 62.5%;
+    font-family: futura-pt, sans-serif;
+    color: $fontColor;
+}
+
+body {
+    font-size: 1.4rem;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: $diactiveColor;
+    margin: 0 10px;
+
+    &:hover {
+        color: $fontColor;
+    }
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+//////////////////// my_diary.html
+.items{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .item{
+        width: 32%;
+        // height: ;
+        // background: ;
+
+        .wrapper {
+            margin: 1rem auto;
+            width: 100%;
+
+            .card {
+                background: #fff;
+                border-radius: 10px;
+                box-shadow: 0 2px 5px #ccc;
+
+                object {
+                    border-radius: 10px 10px 0 0;
+                    max-width: 100%;
+                    height: auto;
+                }
+
+                .card-content {
+                    padding: 8px 20px 20px;
+                    border-top: 1px solid $lineColor;
+                    border-bottom: 1px solid $lineColor;
+
+                    p {
+                        margin-bottom: 0;
+                    }
+
+                    .card-title {
+                        font-size: 2rem;
+                        font-weight: 500;
+                        text-align: center;
+                    }
+                    .card-date {
+                        text-align: center;
+
+                        small {
+                            font-weight: 300;
+                        }
+                    }
+                    .card-text {
+                        font-size: 1.6rem;
+                        font-weight: 400;
+                        line-height: 1.5;
+                        // margin-bottom: 0.2em;
+                    }
+
+                    .function-box {
+                        display: flex;
+                        justify-content:space-between;
+                        padding: 10px;
+
+                        ul {
+                            margin: 0 -15px;
+
+                            li {
+                                display: inline-block;
+                                margin: 0 10px;
+                            }
+                        }
+
+                        div label {
+                            .checkbox {
+                                display: none;
+
+                                &:checked {
+                                    ~ i.far.fa-square {
+                                        display: none;
+                                    }
+                                    ~ i.far.fa-check-square {
+                                        color: #7AA3CC;
+                                        display: inline;
+                                    }
+                                }
+                            }
+                            i.far.fa-square {
+                                color: #c8c8c8;
+                                display: inline;
+                            }
+                            i.far.fa-check-square {
+                                display: none;
+                            }
+                            &:hover i.far {
+                                color: #7AA3CC;
+                            }
+                        }
+                    }
+                }
+
+                .box {
+                    // display: none;
+                    margin:0 3% 3% 3%;
+                    padding: 3%;
+                }
+            }
+        }
+        .wrapper:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 7px 34px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+            transition: all .3s;
+        }
+    }
+}
+//////////////////// /my_diary.html
