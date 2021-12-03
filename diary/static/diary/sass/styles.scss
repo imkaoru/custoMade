@@ -59,10 +59,17 @@ ul {
                 border-radius: 10px;
                 box-shadow: 0 2px 5px #ccc;
 
-                object {
+                .card-image {
                     border-radius: 10px 10px 0 0;
                     max-width: 100%;
                     height: auto;
+
+                    .resize-image {
+                        width: 100%;
+                        height: 300px;
+                        object-fit: cover;
+                        border-radius: 10px 10px 0 0;
+                    }
                 }
 
                 .card-content {

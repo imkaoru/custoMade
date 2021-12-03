@@ -138,8 +138,11 @@ SASS_TEMPLATE_EXTS = ['.html', '.haml']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# 認証周り
 LOGIN_URL = 'accounts:login'
-
 LOGIN_REDIRECT_URL = 'diary:index'
-
 LOGOUT_REDIRECT_URL= 'accounts:login'
+
+# 画像アップロード関連
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

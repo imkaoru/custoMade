@@ -23,3 +23,8 @@ class Diary(models.Model):
 
     # def __str__(self):
     #     return f"\n日記ID: {self.id}\nユーザーID: {self.user_id}\n日付: {self.date}\nタイトル: {self.title}\n和文: {self.japanese_translation}\n英文: {self.english_text}\n完了かどうか: {self.completed}\n"
+
+
+# class Document(models.Model):
+#     description = models.CharField(max_length=255, blank=True)
+#     photo = models.ImageField(upload_to='documents/', default='defo')
