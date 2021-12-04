@@ -9,52 +9,56 @@
         {% if diaries %}
             {% comment %} 以下for文で回す {% endcomment %}
             {% for diary in diaries %}
-                <div class="item">
-                    <div class="wrapper">
-                        <div class="card">
-                            {% if diary.image %}
-                                <div class="card-image">
-                                    <img src="{{ diary.image.url }}" alt="日記の写真" class="resize-image">
-                                </div>
-                            {% else %}
-                                <div class="card-image">
-                                    <img src="../../static/diary/img/default.png" alt="日記の写真" class="resize-image">
-                                </div>
-                            {% endif %}
+                {% if diary.user == login_user %}
+                    {%if forloop.counter|divisibleby:"3" %}
+                        <div class="item multiple-of-3">
+                    {% else %}
+                        <div class="item">
+                    {% endif %}
+                            <div class="card">
+                                {% if diary.image %}
+                                    <div class="card-image">
+                                        <img src="{{ diary.image.url }}" alt="日記の写真" class="resize-image">
+                                    </div>
+                                {% else %}
+                                    <div class="card-image">
+                                        <img src="../../static/diary/img/default.png" alt="日記の写真" class="resize-image">
+                                    </div>
+                                {% endif %}
 
 
 
-                            <div class="card-content">
-                                <p class="card-title">タイトル</p>
-                                <p class="card-date"><small>12/31/2021</small></p>
-                                <p class="card-text">
-                                    ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
-                                    ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
-                                    ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
-                                </p>
+                                <div class="card-content">
+                                    <p class="card-title">タイトル</p>
+                                    <p class="card-date"><small>12/31/2021</small></p>
+                                    <p class="card-text">
+                                        ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+                                        ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+                                        ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+                                    </p>
 
-                                <div class="function-box">
-                                    <ul>
-                                        <li><i class="fas fa-microphone fa-2x"></i></li>
-                                        <li><i class="fas fa-volume-up fa-2x"></i></li>
-                                    </ul>
+                                    <div class="function-box">
+                                        <ul>
+                                            <li><i class="fas fa-microphone fa-2x"></i></li>
+                                            <li><i class="fas fa-volume-up fa-2x"></i></li>
+                                        </ul>
 
-                                    <div>
-                                        <label>
-                                            <input type="checkbox" name='completed' class="checkbox">
-                                            <i class="far fa-square fa-2x"></i>
-                                            <i class="far fa-check-square fa-2x"></i>
-                                        </label>
+                                        <div>
+                                            <label>
+                                                <input type="checkbox" name='completed' class="checkbox">
+                                                <i class="far fa-square fa-2x"></i>
+                                                <i class="far fa-check-square fa-2x"></i>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="box">
-                                <p>ここはアコーディオンエリアです。</p>
+                                <div class="box">
+                                    <p>ここはアコーディオンエリアです。</p>
+                                </div>
                             </div>
-                        </div>
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
         {% else %}
             <p>No diary entries have been posted yet :(</p>

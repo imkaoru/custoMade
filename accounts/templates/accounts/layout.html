@@ -24,24 +24,34 @@
 
     <body>
         <header>
-            <nav class="navbar navbar-expand flex-md-row navbar-dark bg-dark">
-                <div class="container justify-content-between">
-                    <a href="{% url 'accounts:login' %}" class="navbar-brand">custoMade</a>
+            <div class="container">
+                <nav class="navbar navbar-expand flex-md-row navbar-dark bg-dark">
+                    <div class="justify-content-between"> {% comment %} containerクラス削除 {% endcomment %}
+                        <a href="{% url 'accounts:login' %}" class="navbar-brand">custoMade</a>
 
-                    <ul class="navbar-nav mr-md-2">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:login' %}">login</a>
-                        </li>
-                        {% comment %} <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:register' %}">sign up</a>
-                        </li> {% endcomment %}
-                    </ul>
-                </div>
-            </nav>
+                        <ul class="navbar-nav mr-md-2">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:login' %}">login</a>
+                            </li>
+                            {% comment %} <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:register' %}">sign up</a>
+                            </li> {% endcomment %}
+                        </ul>
+                    </div>
+                </nav>
+            </div>
         </header>
 
         <main>
-            {% block main %}{% endblock %}
+            <div class="container">
+                {% block main %}{% endblock %}
+            </div>
         </main>
+
+        <footer>
+            <div class="container">
+                <p><small>©︎ imkaoru, chiken3 2021</small></p>
+            </div>
+        </footer>
     </body>
 </html>

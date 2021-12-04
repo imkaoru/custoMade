@@ -22,18 +22,22 @@
     <body>
         {% comment %} navでbootstrapを使うかどうかは検討中 {% endcomment %}
         <header>
-            <nav>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'accounts:logout' %}">logout</a></li>
-                {% comment %} ログインしてない状態は想定していない {% endcomment %}
-                {% endif %}
-            </nav>
+            <div class="container">
+                <nav>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'accounts:logout' %}">logout</a></li>
+                    {% comment %} ログインしてない状態は想定していない {% endcomment %}
+                    {% endif %}
+                </nav>
+            </div>
         </header>
 
         <main>
-
-            {% block main %}{% endblock %}
-
+            <div class="container">
+                {% block main %}{% endblock %}
+            </div>
         </main>
+
+        {% comment %} <footer><div class="container"></div></footer> {% endcomment %}
     </body>
 </html>
