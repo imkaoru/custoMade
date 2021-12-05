@@ -3,13 +3,16 @@
 {% block extraheader %}{% endblock %}
 
 {% block main %}
-    <h2>Check pronunciation!</h2>
+    <div class="heading-navigation">
+        <p>Diary: {{ count.diaries }} &nbsp;&nbsp;&nbsp;Completed: {{ count.completed_diaries }}</p>
+        <h2>Check pronunciation!</h2>
+    </div>
 
     <div class="items">
         {% if diaries %}
             {% comment %} 以下for文で回す {% endcomment %}
             {% for diary in diaries %}
-                {% if diary.user == login_user %}
+                {% comment %} {% if diary.user == login_user %} {% endcomment %}
                     {%if forloop.counter|divisibleby:"3" %}
                         <div class="item multiple-of-3">
                     {% else %}
@@ -26,29 +29,40 @@
                                     </div>
                                 {% endif %}
 
-
-
                                 <div class="card-content">
-                                    <p class="card-title">タイトル</p>
-                                    <p class="card-date"><small>12/31/2021</small></p>
-                                    <p class="card-text">
-                                        ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
-                                        ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
-                                        ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
-                                    </p>
+                                    <p class="card-title">{{ diary.title }}</p>
+                                    <p class="card-date"><small>{{ diary.date }}</small></p>
+                                    <p class="card-text">{{ diary.english_text }}</p>
 
                                     <div class="function-box">
                                         <ul>
-                                            <li><i class="fas fa-microphone fa-2x"></i></li>
-                                            <li><i class="fas fa-volume-up fa-2x"></i></li>
+                                            <li>
+                                                {% comment %} こっからモーダルウィンドーに飛ばしたい、{% url 'pronunciation' diary.id %} みたいな感じか {% endcomment %}
+                                                <a href="">
+                                                    <i class="fas fa-microphone fa-2x"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <i class="fas fa-volume-up fa-2x"></i>
+                                            </li>
                                         </ul>
 
                                         <div>
-                                            <label>
-                                                <input type="checkbox" name='completed' class="checkbox">
-                                                <i class="far fa-square fa-2x"></i>
-                                                <i class="far fa-check-square fa-2x"></i>
-                                            </label>
+                                            <form action="{% url 'diary:update_check_status' diary.id %}" method="post">
+                                                {% csrf_token %}
+                                                <label>
+                                                    {% comment %} 「チェックしたら状態をDBに保存する」を後ほど実装 {% endcomment %}
+                                                    <input type="checkbox"
+                                                        name="is_completed"
+                                                        value="{{ diary.is_completed }}"
+                                                        class="checkbox" {{ diary.is_completed }}
+                                                        onClick="this.form.submit();"
+                                                    >
+                                                    <i class="far fa-square fa-2x"></i>
+                                                    <i class="far fa-check-square fa-2x"></i>
+                                                </label>
+                                                <input type="submit" value="">
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -58,7 +72,7 @@
                                 </div>
                             </div>
                     </div>
-                {% endif %}
+                {% comment %} {% endif %} {% endcomment %}
             {% endfor %}
         {% else %}
             <p>No diary entries have been posted yet :(</p>

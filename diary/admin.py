@@ -8,7 +8,7 @@ from .models import User, Diary, Count
 
 
 class DiaryAdmin(admin.ModelAdmin):
-    list_display = ("id", "user", "date", "title", "japanese_translation", "english_text", "image", "completed")
+    list_display = ("id", "user", "date", "title", "japanese_translation", "english_text", "image", "is_completed")
 
 class CountAdmin(admin.ModelAdmin):
     list_display = ("id", "diaries", "completed_diaries")

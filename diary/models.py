@@ -20,7 +20,8 @@ class Diary(models.Model):
     japanese_translation = models.TextField()
     english_text = models.TextField()
     image = models.ImageField(blank=True, upload_to='documents/')
-    completed = models.BooleanField(default=False)
+    # completed = models.BooleanField(default=False)
+    is_completed = models.CharField(max_length=10, default='unchecked')
 
     # def __str__(self):
     #     return f"\n日記ID: {self.id}\nユーザーID: {self.user.id}\n日付: {self.date}\nタイトル: {self.title}\n和文: {self.japanese_translation}\n英文: {self.english_text}\n完了かどうか: {self.completed}\n"
