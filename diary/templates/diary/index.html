@@ -1,12 +1,7 @@
 {% extends "diary/layout.html" %}
 
-{% block body %}
-	{% comment %}ここにhtmlを書いていく{% endcomment %}
+{% block extraheader %}{% endblock %}
 
-    {% if newyear %}
-        <h1>YES</h1>
-    {% else %}
-        <h1>NO</h1>
-    {% endif %}
-
+{% block main %}
+	<p>ログイン成功</p>
 {% endblock %}
