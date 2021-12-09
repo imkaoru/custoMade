@@ -13,7 +13,7 @@
             {% comment %} 以下for文で回す {% endcomment %}
             {% for diary in diaries %}
                 {% comment %} {% if diary.user == login_user %} {% endcomment %}
-                    {%if forloop.counter|divisibleby:"3" %}
+                    {% if forloop.counter|divisibleby:"3" %}
                         <div class="item multiple-of-3">
                     {% else %}
                         <div class="item">
@@ -51,11 +51,11 @@
                                             <form action="{% url 'diary:update_check_status' diary.id %}" method="post">
                                                 {% csrf_token %}
                                                 <label>
-                                                    {% comment %} 「チェックしたら状態をDBに保存する」を後ほど実装 {% endcomment %}
                                                     <input type="checkbox"
                                                         name="is_completed"
                                                         value="{{ diary.is_completed }}"
-                                                        class="checkbox" {{ diary.is_completed }}
+                                                        class="checkbox"
+                                                        {{ diary.is_completed }}
                                                         onClick="this.form.submit();"
                                                     >
                                                     <i class="far fa-square fa-2x"></i>

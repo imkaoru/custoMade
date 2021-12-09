@@ -171,3 +171,73 @@ ul {
     }
 }
 //////////////////// /my_diary.html
+
+
+//////////////////// index.html
+// %submit-event {
+//     ~ i.fas.fa-angle-down {
+//         display: none;
+//     }
+//     ~ i.fas.fa-angle-double-down {
+//         color: #c8c8c8;
+//         display: inline;
+//     }
+// }
+
+// carrypandaのpost.htmlのレイアウト参考に後ほど...
+.diary-form {
+    width: 72%;
+    margin: 0 auto;
+
+    .section {
+        &.diactivate {
+            display: none;
+        }
+    }
+
+    form .section {
+        &.activate {
+            display: block;
+        }
+
+        div {
+            input[type="text"],
+            textarea {
+                // display: block;
+                width: 100%;
+                background: rgba(255, 255, 255, .5);
+                border: 1px #fff solid;
+                border-radius: 8px;
+                color: $fontColor;
+                font-size: 1.8rem;
+                padding: 5px 10px;
+            }
+        }
+
+        .next-btn {
+            text-align: center;
+
+            label {
+                // .submit {
+                //     &:hover {
+                //         @extend %submit-event;
+                //     }
+                //     &:active {
+                //         @extend %submit-event;
+                //     }
+                //     &:visited {
+                //         @extend %submit-event;
+                //     }
+                // }
+                i.fas.fa-angle-down {
+                    color: $diactiveColor;
+                    display: inline;
+                }
+                // i.fas.fa-angle-double-down {
+                //     display: none;
+                // }
+            }
+        }
+    }
+}
+//////////////////// /index.html

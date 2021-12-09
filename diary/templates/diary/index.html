@@ -3,5 +3,150 @@
 {% block extraheader %}{% endblock %}
 
 {% block main %}
-	<p>ログイン成功</p>
+<h2>Write a diary!</h2>
+
+<div class="diary-form">
+	{% if diary_step == 1 %}
+	<form action="{% url 'diary:keep_title' %}" method="post">
+	{% elif diary_step == 2 %}
+	<form action="{% url 'diary:keep_japanese_translation' %}" method="post">
+	{% elif diary_step == 3 %}
+	<form action="{% url 'diary:keep_own_english_text' %}" method="post">
+	{% elif diary_step == 4 %}
+	<form action="{% url 'diary:translate_to_english' %}" method="post">
+	{% else %}
+	<form action="{% url 'diary:keep_english_text' %}" method="post" enctype="multipart/form-data">
+	{% endif %}
+
+	{% csrf_token %}
+		<div class="section">
+			<div>
+				<label for="title">Title of the diary.</label>
+				<input type="text" id="title" name="title" maxlength="64" spellcheck="true" required value="{{diary.title}}">
+			</div>
+
+			<div>
+				<label for="origin_diary">Write a diary in Japanese.</label>
+				<textarea rows="4" id="origin_diary" name="origin_diary" spellcheck="true" required>{{diary.origin_diary}}</textarea>
+			</div>
+
+			{% if diary_step == 1 %}
+			<div class="next-btn">
+				<label>
+					<input type="submit" value="">
+					<i class="fas fa-angle-down fa-3x"></i>
+					{% comment %} <i class="fas fa-angle-double-down fa-2x"></i> {% endcomment %}
+				</label>
+			</div>
+			{% endif %}
+		</div>
+	{% if diary_step == 1 %}
+	</form>
+	{% endif %}
+
+		{% if diary_step > 1 %}
+		<div class="section activate">
+		{% else %}
+		<div class="section diactivate">
+		{% endif %}
+			<i class="fas fa-arrow-down fa-3x"></i>
+
+			<div>
+				<label for="japanese_translation">Summarize the diary.</label>
+				<textarea rows="4" id="japanese_translation" name="japanese_translation" required>{{diary.japanese_translation}}</textarea>
+			</div>
+
+			{% if diary_step == 2 %}
+			<div class="next-btn">
+				<label>
+					<input type="submit" value="">
+					<i class="fas fa-angle-down fa-3x"></i>
+				</label>
+			</div>
+			{% endif %}
+		</div>
+	{% if diary_step == 2 %}
+	</form>
+	{% endif %}
+
+		{% if diary_step > 2 %}
+		<div class="section activate">
+		{% else %}
+		<div class="section diactivate">
+		{% endif %}
+			<i class="fas fa-arrow-down fa-3x"></i>
+
+			<div>
+				<label for="own_english_text">Make it into an English sentence on your own.</label>
+				<textarea rows="4" id="own_english_text" name="own_english_text" required>{{diary.own_english_text}}</textarea>
+			</div>
+
+			{% if diary_step == 3 %}
+			<div class="next-btn">
+				<label>
+					<input type="submit" value="">
+					<i class="fas fa-angle-down fa-3x"></i>
+				</label>
+			</div>
+			{% endif %}
+		</div>
+	{% if diary_step == 3 %}
+	</form>
+	{% endif %}
+
+		{% if diary_step > 3 %}
+		<div class="section activate">
+		{% else %}
+		<div class="section diactivate">
+		{% endif %}
+			<i class="fas fa-arrow-down fa-3x"></i>
+
+			<div>
+				<label for="english_text">To translate(example).</label>
+				<textarea rows="4" id="english_text" name="english_text" readonly>{{diary.english_text}}</textarea>
+
+				<input type="submit" name="translate-btn" value="translate" class="translate-btn">
+			</div>
+
+			{% if diary_step == 4 %}
+			<div class="next-btn">
+				<label>
+					<input type="submit" value="">
+					<i class="fas fa-angle-down fa-3x"></i>
+				</label>
+			</div>
+			{% endif %}
+		</div>
+	{% if diary_step == 4 %}
+	</form>
+	{% endif %}
+
+		{% if diary_step > 4 %}
+		<div class="section activate">
+		{% else %}
+		<div class="section diactivate">
+		{% endif %}
+			<i class="fas fa-arrow-down fa-3x"></i>
+
+			<div>
+				<label for="english_text">Compare with and revise your own writing.</label>
+				<textarea rows="4" readonly>{{diary.own_english_text}}</textarea>
+				<textarea rows="4" id="english_text" name="english_text" required>{{diary.english_text}}</textarea>
+			</div>
+
+			<div>
+				<label for="image">Add a photo.</label>
+				<label class="image-btn">
+					select file
+					<input type="file" id="image" name="image" accept="image/*">
+				</label>
+			</div>
+			<img id="preview"></img>
+
+			<input type="submit" class="keep-btn" value="Done!">
+		</div>
+	{% if diary_step == 5 %}
+	</form>
+	{% endif %}
+</div>
 {% endblock %}
