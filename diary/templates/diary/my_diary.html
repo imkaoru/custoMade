@@ -42,7 +42,7 @@
                 <div class="card-content">
                     <p class="card-title">{{ diary.title }}</p>
                     <p class="card-date"><small>{{ diary.date }}</small></p>
-                    <p class="card-text">{{ diary.english_text }}</p>
+                    <p id="card-text{{ forloop.counter }}" class="card-text">{{ diary.english_text }}</p>
 
                     <div class="function-box">
                         <ul>
@@ -53,7 +53,9 @@
                                 </a>
                             </li>
                             <li>
-                                <i class="fas fa-volume-up fa-2x"></i>
+                                <button onclick="textToSpeech({{ forloop.counter }});">
+                                    <i class="fas fa-volume-up fa-2x"></i>
+                                </button>
                             </li>
                         </ul>
 

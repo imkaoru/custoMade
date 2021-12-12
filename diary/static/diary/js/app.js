@@ -21,3 +21,30 @@ function previewImage(obj) {
     fileReader.readAsDataURL(obj.files[0]);
 }
 //////////////////// /index.html
+
+
+//////////////////// my_diary.html
+// 音声合成
+// 現状、最後まで聞いた場合再度再生するために2回押さないといけない
+let switchOver = 0;
+function textToSpeech(count) {
+    if (!speechSynthesis.speaking) {
+        switchOver = 0;
+    }
+    switch (switchOver) {
+        case 0:
+            switchOver = 1;
+            let id = 'card-text' + count;
+            let word = document.getElementById(id).innerHTML;
+            let u = new SpeechSynthesisUtterance();
+            u.lang = 'en-US';
+            u.text = word;
+            speechSynthesis.speak(u);
+            break;
+        case 1:
+            switchOver = 0;
+            speechSynthesis.cancel();
+            break;
+    }
+}
+//////////////////// /my_diary.html
