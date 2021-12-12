@@ -11,7 +11,8 @@ from .models import Diary, Count, BaseManager
 from .forms import DiaryForm
 
 
-date = date.today()
+# date = date.today()
+date = "2021-12-07" #開発環境のみ使用 1/3
 diary_step = 1
 translate = False
 
@@ -73,6 +74,7 @@ def keep_title(request):
 
         Diary.objects.create(
             user=user,
+            date=date, #開発環境のみ使用 2/3
             title=request.POST.get('title'),
             origin_diary=request.POST.get('origin_diary'),
         )

@@ -13,22 +13,42 @@ $lineColor: #e0e0e0;
 html {
     font-size: 62.5%;
     font-family: futura-pt, sans-serif;
+    font-weight: 400;
     color: $fontColor;
 }
 
 body {
-    font-size: 1.4rem;
-    word-break: break-all;
-
+    font-size: 1.6rem;
     background-color: #DDD; //一旦
+    word-break: break-all;
+    margin: 0;
+    // overflow: hidden;
 }
 
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
+// header, main, footer {
+//     margin-bottom: 2vw;
+// }
+header {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: #FFF;
+}
+main, footer {
+    margin-bottom: 2vw;
+}
+main {
+    margin-top: 10vw;
+}
+
 .container {
-    padding: 1% 2% 0;
+    padding: 0 2vw;
 }
 
 a {
@@ -36,21 +56,122 @@ a {
     color: $diactiveColor;
     margin: 0 10px;
 
-    &:hover {
-        color: $fontColor;
-    }
+    // &:hover {
+    //     color: $fontColor;
+    // }
 }
 
 ul {
     list-style-type: none;
 }
 
+::placeholder {
+    color: $diactiveColor;
+    font-weight: 300;
+}
+
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 2vw 0 4vw;
+
+    .header-logo {
+        font-size: 4rem;
+        font-family: marydale, sans-serif;
+        font-weight: 900;
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-right: 2vw;
+
+            a {
+                font-size: 2rem;
+                font-weight: 500;
+
+                position: relative;
+                &::after {
+                    content: '';
+                    /*絶対配置で線の位置を決める*/
+                    position: absolute;
+                    bottom: -40%;
+                    left: 10%;
+                    /*線の形状*/
+                    width: 80%;
+                    height: 2px;
+                    background:#0481A2;
+                    /*アニメーションの指定*/
+                    transition: all .2s;
+                    transform: scale(0, 1);/*X方向0、Y方向1*/
+                    transform-origin: center top;/*上部中央基点*/
+                }
+                &:hover {
+                    color:#0481A2;
+                    &::after {
+                        transform: scale(1, 1);/*X方向にスケール拡大*/
+                    }
+                }
+            }
+        }
+        .current {
+            color:#0481A2;
+            a {
+                color: $fontColor;
+                &::after{
+                    transform: scale(1, 1);/*X方向にスケール拡大*/
+                }
+            }
+        }
+    }
+}
+
+.head-nav {
+    text-align: center;
+    margin-bottom: 2vw;
+
+    h1 {
+        font-size: 3.2rem;
+        font-weight: 600;
+    }
+
+    div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 4vw;
+
+        ul li {
+            display: inline-block;
+
+            &:first-of-type {
+                margin-right: 2vw;
+            }
+        }
+    }
+}
+
+.footer-text {
+    font-size: 2.2rem;
+}
+
 
 //////////////////// my_diary.html
 .items{
     display: flex;
-    // justify-content: space-between;
     flex-wrap: wrap;
+
+    // 以下、gridレイアウトの場合
+    // display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    // grid-gap: 2%;
 
     .item{
         width: 32%;
@@ -102,16 +223,16 @@ ul {
                     }
                 }
                 .card-text {
-                    font-size: 1.6rem;
-                    font-weight: 400;
                     line-height: 1.5;
                     // margin-bottom: 0.2em;
                 }
 
                 .function-box {
                     display: flex;
+                    flex-wrap: wrap;
                     justify-content: space-between;
                     padding: 10px;
+
 
                     ul {
                         margin: 0 -15px;
@@ -201,16 +322,83 @@ ul {
         }
 
         div {
+            margin-bottom: 2vw;
+
+            label {
+                display: inline-block;
+                font-size: 2.4rem;
+                margin-bottom: 0.5vw;
+            }
+
             input[type="text"],
             textarea {
                 // display: block;
                 width: 100%;
-                background: rgba(255, 255, 255, .5);
+                background: rgba(255, 255, 255, .8);
                 border: 1px #fff solid;
                 border-radius: 8px;
                 color: $fontColor;
                 font-size: 1.8rem;
                 padding: 5px 10px;
+            }
+
+            .image-btn {
+                display: block;
+                width: 15%;
+                min-width: 100px;
+                background: #88acea; //後ほど変更
+                color: #FFF;
+                font-size: 2rem;
+                // line-height: 1.7; /* 行間 */
+                border-radius: 6px;
+                cursor: pointer; /* カーソルを指に */
+                text-align: center;
+                margin: 0;
+                padding: 8px; /* 文字まわりの余白 */
+
+                input {
+                    display: none;
+                }
+            }
+        }
+
+        .translate-box {
+            position: relative;
+
+            textarea {
+                background: rgba(255, 255, 255, .4);
+            }
+
+            .translate-btn {
+                display: block;
+
+                position: absolute;
+                left: 3%;
+                bottom: 12%;
+
+                width: 15%;
+                min-width: 100px;
+                background: #88acea; //後ほど変更
+                color: #FFF;
+                font-size: 2rem;
+                // line-height: 1.7;
+                border-radius: 6px;
+                margin: 0;
+                padding: 6px;
+            }
+        }
+
+        .compare-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            textarea {
+                width: 49%;
+
+                &:first-of-type {
+                    background: rgba(255, 255, 255, .4);
+                }
             }
         }
 
@@ -238,6 +426,36 @@ ul {
                 // }
             }
         }
+
+        .arrow {
+            text-align: center;
+        }
+
+        #preview {
+            width: 33%;
+            // max-width: 600px;
+            // border: solid 1px silver;
+        }
+
+        .keep-btn {
+            display: block;
+            width: 25%;
+            min-width: 200px;
+            background: #668ad8; //後ほど変更
+            color: #FFF;
+            font-size: 2.2rem;
+            font-weight: 600;
+            // line-height: 1.7;
+            border: dashed 2px #FFF;
+            border-radius: 6px;
+            box-shadow: 0px 0px 0px 2px #668ad8;
+            margin: 0 auto;
+            padding: 6px;
+        }
     }
+}
+
+footer {
+    text-align: center;
 }
 //////////////////// /index.html

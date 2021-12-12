@@ -20,13 +20,34 @@
     </head>
 
     <body>
-        {% comment %} navでbootstrapを使うかどうかは検討中 {% endcomment %}
         <header>
             <div class="container">
                 <nav>
-                    {% if user.is_authenticated %}
-                        <li><a href="{% url 'accounts:logout' %}">logout</a></li>
-                    {% comment %} ログインしてない状態は想定していない {% endcomment %}
+                    {% if user.is_authenticated %} {% comment %} このifいらないかもしれない {% endcomment %}
+                    <p class="header-logo">custMade</p>
+
+                    <ul class="nav-menu">
+                        {% if diary %}
+                        <li class="current">
+                        {% else %}
+                        <li>
+                        {% endif %}
+                            <a href="{% url 'diary:index' %}">Diary</a>
+                        </li>
+                        <li>
+                            <a href="">(Vocabulary)</a>
+                        </li>
+                        {% if diaries %}
+                        <li class="current">
+                        {% else %}
+                        <li>
+                        {% endif %}
+                            <a href="{% url 'diary:my_diary' %}">Pronunciation</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'accounts:logout' %}">Logout</a>
+                        </li>
+                    </ul>
                     {% endif %}
                 </nav>
             </div>
@@ -38,14 +59,19 @@
             </div>
         </main>
 
-        {% comment %} <footer><div class="container"></div></footer> {% endcomment %}
+        <footer>
+            <div class="container">
+                {% block footer %}{% endblock %}
+            </div>
+        </footer>
 
 
-        {% comment %} <script
+        {% comment %} 一旦、jQueryを使用 {% endcomment %}
+        <script
             src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossorigin="anonymous"
-        ></script> {% endcomment %}
+        ></script>
         <script src="{% static 'diary/js/app.js' %}"></script>
     </body>
 </html>

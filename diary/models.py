@@ -27,7 +27,8 @@ class BaseManager(models.Manager):
 
 class Diary(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateField(auto_now_add=True)
+    # date = models.DateField(auto_now_add=True)
+    date = models.DateField() #開発環境のみ使用 3/3
     title = models.CharField(max_length=255)
     origin_diary = models.TextField()
     japanese_translation = models.TextField()
