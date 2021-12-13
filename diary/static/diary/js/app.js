@@ -25,6 +25,7 @@ function previewImage(obj) {
 
 //////////////////// my_diary.html
 // 音声合成
+// 現状、最後まで発音し切った時に自動的にアイコンを切り替える処理がうまくいかなかったため、そこは後回し
 let switchOverS = 0;
 function textToSpeech(count) {
     if (!speechSynthesis.speaking) {
@@ -122,4 +123,21 @@ function speechToText(count) {
             break;
     }
 }
+
+// アコーディオンエリア
+// 必要に応じて、アコーディオン開いた時にその他全てのアコーディオンを閉じる処理を追加する
+$('.accordion-btn').on('click', function() {
+	// $('.accordion-box').slideUp(500);　//クラス名.accordion-boxがついたすべてのアコーディオンを閉じる
+
+	let box = $(this).next(".accordion-box");
+	$(box).slideToggle(); //アコーディオンの上下動作
+
+    if ($(this).hasClass('close')) {
+		$(this).removeClass('close');
+        $(this).html( '<i class="fas fa-plus fa-2x"></i>' );
+	} else {
+		$(this).addClass('close');
+        $(this).html( '<i class="fas fa-times fa-2x"></i>' );
+	}
+});
 //////////////////// /my_diary.html

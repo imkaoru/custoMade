@@ -445,10 +445,17 @@ footer {
                 }
             }
 
-            .box {
-                // display: none;
-                margin:0 3% 3% 3%;
-                padding: 3%;
+            section {
+                padding: 4% 6%;
+
+                .accordion-btn {
+                    cursor: pointer;
+                    text-align: center;
+                }
+                .accordion-box {
+                    display: none;
+                    margin-top: 4%;
+                }
             }
 
             &:hover {

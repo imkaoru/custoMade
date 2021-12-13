@@ -87,9 +87,15 @@
                     </div>
                 </div>
 
-                <div class="box">
-                    <p>ここはアコーディオンエリアです。</p>
-                </div>
+                <section>
+                    <div class="accordion-btn">
+                        {% comment %} 最初のみここから画面に表示 {% endcomment %}
+                        <i class="fas fa-plus fa-2x"></i>
+                    </div>
+                    <div class="accordion-box">
+                        <p>{{ diary.japanese_translation }}</p>
+                    </div>
+                </section>
             </div>
         </div>
 
