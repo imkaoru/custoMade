@@ -1,6 +1,12 @@
 {% extends "diary/layout.html" %}
 
-{% block extraheader %}{% endblock %}
+{% block extraheader %}
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css"
+>
+{% endblock %}
 
 {% block main %}
 <div class="head-nav">
@@ -48,13 +54,15 @@
                         <ul>
                             <li>
                                 {% comment %} こっからモーダルウィンドーに飛ばしたい、{% url 'pronunciation' diary.id %} みたいな感じか {% endcomment %}
-                                <a href="">
+                                <a href="#speechToText{{ forloop.counter }}" class="speechToText">
                                     <i class="fas fa-microphone fa-2x"></i>
                                 </a>
                             </li>
                             <li>
                                 <button onclick="textToSpeech({{ forloop.counter }});">
+                                    {% comment %} 後ほど、押すたびにアイコンを切り替える処理を加える {% endcomment %}
                                     <i class="fas fa-volume-up fa-2x"></i>
+                                    {% comment %} <i class="far fa-stop-circle"></i> {% endcomment %}
                                 </button>
                             </li>
                         </ul>
@@ -84,9 +92,32 @@
                 </div>
             </div>
         </div>
+
+        <section id="speechToText{{ forloop.counter }}" class="hide-area">
+            <h2>Pronunciation practice :)</h2>
+            <p>{{ diary.english_text }}</p>
+            <hr>
+            <div class="result-box" id="result-div{{ forloop.counter }}">
+                {% comment %} 最初のみここから画面に表示 {% endcomment %}
+                <p class="standby">Speak into the microphone. (English)</p>
+            </div>
+            {% comment %} 音の波を表現したいが、後回したいが後回し {% endcomment %}
+            <div class="recording-box">
+                <button id="recording-btn{{ forloop.counter }}" onclick="speechToText({{ forloop.counter }});">
+                    {% comment %} 最初のみここから画面に表示 {% endcomment %}
+                    <i class="fas fa-microphone fa-2x"></i>
+                </button>
+                <p><small>Recording start/stop</small></p>
+            </div>
+        </section>
     {% endfor %}
     {% else %}
         <p>No diary entries have been posted yet :(</p>
     {% endif %}
 </div> {% comment %} items {% endcomment %}
+{% endblock %}
+
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
 {% endblock %}

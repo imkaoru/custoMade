@@ -14,9 +14,9 @@
         <link rel="stylesheet" href="https://use.typekit.net/kqm8xlk.css">
         <link rel="stylesheet" href="https://use.typekit.net/kqm8xlk.css">
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+        {% block extraheader %}{% endblock %}
         {% comment %} <link rel="stylesheet" href="{% static 'diary/styles.css' %}"> {% endcomment %}
         <link rel="stylesheet" href="{% sass_src 'diary/sass/styles.scss' %}">
-        {% block extraheader %}{% endblock %}
     </head>
 
     <body>
@@ -72,6 +72,7 @@
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossorigin="anonymous"
         ></script>
+        {% block script %}{% endblock %}
         <script src="{% static 'diary/js/app.js' %}"></script>
     </body>
 </html>

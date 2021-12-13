@@ -19,6 +19,7 @@ html {
 
 body {
     font-size: 1.6rem;
+    line-height: 1.7;
     background-color: #DDD; //一旦
     word-break: break-all;
     margin: 0;
@@ -457,5 +458,81 @@ footer {
             }
         }
     }
+
+    .hide-area{
+        display: none;
+    }
 }
 //////////////////// /my_diary.html
+//////////////////// Modaal Window
+.modaal-container {
+    width: 40vw;
+    height: 48vw;
+    border-radius: 10px;
+
+    .modaal-content.modaal-focus .modaal-content-container {
+        text-align: center;
+
+        h2 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 2vw;
+        }
+        p:first-of-type {
+            height: 10vw;
+            overflow: scroll;
+            font-size: 1.8rem;
+            text-align: left;
+            margin-bottom: 2vw;
+        }
+        hr {
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #fff;
+            margin-bottom: 2vw;
+        }
+        .result-box {
+            height: 14vw;
+            overflow: scroll;
+            margin-bottom: 2vw;
+
+            p {
+                font-size: 1.6rem;
+                text-align: center;
+                margin-bottom: 0.5vw;
+            }
+            .standby {
+                height: 2vw;
+                font-style: italic;
+                color: $diactiveColor;
+                margin-bottom: 2vw;
+            }
+        }
+
+        .recording-box {
+            // button {
+            //     width: 39px;
+            //     height: 39px;
+            //     border: 1px solid #000;
+            //     border-radius: 50%;
+            //     padding: 2px;
+            // }
+            p {
+                text-align: center;
+            }
+        }
+    }
+
+    .modaal-close {
+        &:after,
+        &:before {
+            background:#ccc;
+        }
+        &:focus:after,
+        &:focus:before,
+        &:hover:after,
+        &:hover:before{
+            background:#666;
+        }
+    }
+}
+//////////////////// /Modaal Window
