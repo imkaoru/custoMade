@@ -55,8 +55,6 @@ main {
 a {
     text-decoration: none;
     color: $diactiveColor;
-    margin: 0 10px;
-
     // &:hover {
     //     color: $fontColor;
     // }
@@ -91,7 +89,7 @@ nav {
         li {
             display: flex;
             align-items: center;
-            margin-right: 2vw;
+            margin-right: 3vw;
 
             a {
                 font-size: 2rem;
@@ -153,7 +151,7 @@ nav {
             display: inline-block;
 
             &:first-of-type {
-                margin-right: 1vw;
+                margin-right: 2vw;
             }
         }
     }
@@ -351,9 +349,8 @@ footer {
 
     .item{
         width: 32%;
-        // height: ;
-        margin: 0 2% 1% 0;
-        // background: ;
+        // height: auto;
+        margin: 0 2% 2% 0;
 
         &.multiple-of-3 {
             margin-right: 0;
@@ -371,14 +368,14 @@ footer {
 
                 .resize-image {
                     width: 100%;
-                    height: 300px;
+                    height: 18vw;
                     object-fit: cover;
                     border-radius: 10px 10px 0 0;
                 }
             }
 
             .card-content {
-                padding: 8px 20px 20px;
+                padding: 2% 6% 4%;
                 border-top: 1px solid $lineColor;
                 border-bottom: 1px solid $lineColor;
 
@@ -393,29 +390,35 @@ footer {
                 }
                 .card-date {
                     text-align: center;
+                    margin-bottom: 0.5vw;
 
                     small {
+                        font-size: 1.4rem;
                         font-weight: 300;
                     }
                 }
-                .card-text {
-                    line-height: 1.5;
-                    // margin-bottom: 0.2em;
+                .card-text-box {
+                    height: 12vw;
+                    overflow: scroll;
+                    margin-bottom: 1vw;
+
+                    .card-text {
+                        font-size: 1.8rem;
+                        line-height: 1.5;
+                        // margin-bottom: 0.2em;
+                    }
                 }
 
                 .function-box {
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-between;
-                    padding: 10px;
 
+                    ul li {
+                        display: inline-block;
 
-                    ul {
-                        margin: 0 -15px;
-
-                        li {
-                            display: inline-block;
-                            margin: 0 10px;
+                        &:first-of-type {
+                            margin: 0 1.5vw 0 0.5vw;
                         }
                     }
 
@@ -454,7 +457,7 @@ footer {
             }
 
             section {
-                padding: 4% 6%;
+                padding: 3% 8% 4%;
 
                 .accordion-btn {
                     cursor: pointer;
