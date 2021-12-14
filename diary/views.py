@@ -166,6 +166,7 @@ def keep_english_text(request):
 
 #################### my_diary.html
 sort_state = 0
+filter_state = 0
 
 
 @login_required
@@ -178,10 +179,25 @@ def my_diary(request):
         new.save()
 
     global sort_state
-    if sort_state == 0:
-        diaries = Diary.objects.filter(user=request.user).order_by('date').reverse()
+    global filter_state
+    if sort_state == 0 and filter_state == 0:
+        diaries = Diary.objects.filter(
+            user=request.user,
+        ).order_by('date').reverse()
+    elif sort_state == 0 and filter_state == 1:
+        diaries = Diary.objects.filter(
+            user=request.user,
+            is_completed="unchecked",
+        ).order_by('date').reverse()
+    elif sort_state == 1 and filter_state == 0:
+        diaries = Diary.objects.filter(
+            user=request.user,
+        ).order_by('date')
     else:
-        diaries = Diary.objects.filter(user=request.user).order_by('date')
+        diaries = Diary.objects.filter(
+            user=request.user,
+            is_completed="unchecked",
+        ).order_by('date')
 
     # diaries = Diary.objects.filter(user=request.user)
     count = Count.objects.filter(user=request.user).first()
@@ -192,17 +208,28 @@ def my_diary(request):
         "diaries": diaries,
         "count": count,
         "sort_state": sort_state,
+        "filter_state": filter_state,
     }
     return render(request, "diary/my_diary.html", context)
 
 
 @login_required
-def sort(request):
+def sort_diaries(request):
     global sort_state
     if sort_state == 0:
         sort_state = 1
     else:
         sort_state = 0
+    return redirect('diary:my_diary')
+
+
+@login_required
+def filter_diaries(request):
+    global filter_state
+    if filter_state == 0:
+        filter_state = 1
+    else:
+        filter_state = 0
     return redirect('diary:my_diary')
 
 

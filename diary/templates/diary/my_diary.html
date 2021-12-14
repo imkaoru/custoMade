@@ -27,7 +27,13 @@
                 </a>
             </li>
             <li>
-                <i class="fas fa-filter fa-2x"></i>
+                <a href="{% url 'diary:filter' %}">
+                    {% if filter_state == 0 %}
+                    <i class="fas fa-filter fa-2x diactive"></i>
+                    {% else %}
+                    <i class="fas fa-filter fa-2x active"></i>
+                    {% endif %}
+                </a>
             </li>
         </ul>
     </div>
@@ -126,7 +132,10 @@
         </section>
     {% endfor %}
     {% else %}
-        <p>No diary entries have been posted yet :(</p>
+    <div class="no-diary">
+        <p>All journals are "completed" :)</p>
+        <p>(Or there may be no diary yet. <a href="{% url 'diary:index' %}">Do you want to write a diary？</a>)</p>
+    </div>
     {% endif %}
 </div> {% comment %} items {% endcomment %}
 {% endblock %}
