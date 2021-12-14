@@ -414,7 +414,7 @@ footer {
                     flex-wrap: wrap;
                     justify-content: space-between;
 
-                    ul li {
+                    .left-function li {
                         display: inline-block;
 
                         &:first-of-type {
@@ -422,7 +422,7 @@ footer {
                         }
                     }
 
-                    div form {
+                    .right-function li form {
                         label {
                             .checkbox {
                                 display: none;
@@ -497,19 +497,19 @@ footer {
 //////////////////// /my_diary.html
 //////////////////// Modaal Window
 .modaal-container {
-    width: 40vw;
-    height: 48vw;
+    width: 44vw;
+    // height: 48vw;
     border-radius: 10px;
 
-    .modaal-content.modaal-focus .modaal-content-container {
+    .modaal-content.modaal-focus .modaal-content-container .speechToText-modaal {
         text-align: center;
 
-        h2 {
+        .modaal-title {
             font-size: 2.8rem;
             font-weight: 600;
             margin-bottom: 2vw;
         }
-        p:first-of-type {
+        .english-text {
             height: 10vw;
             overflow: scroll;
             font-size: 1.8rem;
@@ -540,15 +540,17 @@ footer {
         }
 
         .recording-box {
-            // button {
+            // .recording-btn {
             //     width: 39px;
             //     height: 39px;
             //     border: 1px solid #000;
             //     border-radius: 50%;
             //     padding: 2px;
             // }
-            p {
+            .btn-notes {
+                // height: 3vw;
                 text-align: center;
+                // margin: 0;
             }
         }
     }
