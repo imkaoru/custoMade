@@ -45,7 +45,7 @@ main, footer {
     margin-bottom: 2vw;
 }
 main {
-    margin-top: 10vw;
+    margin-top: 9vw;
 }
 
 .container {
@@ -102,7 +102,7 @@ nav {
                     content: '';
                     /*絶対配置で線の位置を決める*/
                     position: absolute;
-                    bottom: -40%;
+                    bottom: -20%;
                     left: 10%;
                     /*線の形状*/
                     width: 80%;
@@ -153,7 +153,7 @@ nav {
             display: inline-block;
 
             &:first-of-type {
-                margin-right: 2vw;
+                margin-right: 1vw;
             }
         }
     }

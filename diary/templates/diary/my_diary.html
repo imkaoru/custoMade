@@ -16,7 +16,15 @@
         <p>Diary: {{ count.diaries }} &nbsp;&nbsp;&nbsp;Completed: {{ count.completed_diaries }}</p>
         <ul>
             <li>
-                <i class="fas fa-sort-amount-down fa-2x"></i>
+                <a href="{% url 'diary:sort' %}">
+                    {% if sort_state == 0 %}
+                    <i class="fas fa-sort-amount-up fa-2x"></i>
+                    {% comment %} <i class="fas fa-sort-numeric-up-alt fa-2x"></i> {% endcomment %}
+                    {% else %}
+                    <i class="fas fa-sort-amount-down-alt fa-2x"></i>
+                    {% comment %} <i class="fas fa-sort-numeric-down fa-2x"></i> {% endcomment %}
+                    {% endif %}
+                </a>
             </li>
             <li>
                 <i class="fas fa-filter fa-2x"></i>

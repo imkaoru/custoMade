@@ -11,6 +11,7 @@ from .models import Diary, Count, BaseManager
 from .forms import DiaryForm
 
 
+#################### index.html
 # date = date.today()
 date = "2021-12-07" #開発環境のみ使用 1/3
 diary_step = 1
@@ -160,6 +161,11 @@ def keep_english_text(request):
         if not 'translate-btn' in request.POST:
             return redirect('diary:my_diary')
     return redirect('diary:index')
+#################### index.html
+
+
+#################### my_diary.html
+sort_state = 0
 
 
 @login_required
@@ -171,16 +177,33 @@ def my_diary(request):
         new = Count(user=request.user)
         new.save()
 
-    diaries = Diary.objects.filter(user=request.user)
+    global sort_state
+    if sort_state == 0:
+        diaries = Diary.objects.filter(user=request.user).order_by('date').reverse()
+    else:
+        diaries = Diary.objects.filter(user=request.user).order_by('date')
+
+    # diaries = Diary.objects.filter(user=request.user)
     count = Count.objects.filter(user=request.user).first()
-    count.diaries = diaries.count()
+    count.diaries = Diary.objects.filter(user=request.user).count()
     count.save()
 
     context = {
         "diaries": diaries,
-        "count": count
+        "count": count,
+        "sort_state": sort_state,
     }
     return render(request, "diary/my_diary.html", context)
+
+
+@login_required
+def sort(request):
+    global sort_state
+    if sort_state == 0:
+        sort_state = 1
+    else:
+        sort_state = 0
+    return redirect('diary:my_diary')
 
 
 @login_required
@@ -202,3 +225,4 @@ def update_check_status(request, diary_id):
     count.save()
 
     return redirect('diary:my_diary')
+#################### my_diary.html
