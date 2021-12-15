@@ -307,7 +307,7 @@ nav {
             text-align: center;
         }
 
-        #preview {
+        .preview {
             width: 33%;
             // max-width: 600px;
             // border: solid 1px silver;
@@ -501,56 +501,64 @@ footer {
     // height: 48vw;
     border-radius: 10px;
 
-    .modaal-content.modaal-focus .modaal-content-container .speechToText-modaal {
-        text-align: center;
+    .modaal-content.modaal-focus .modaal-content-container {
+        .speechToText-modaal {
+            text-align: center;
 
-        .modaal-title {
-            font-size: 2.8rem;
-            font-weight: 600;
-            margin-bottom: 2vw;
-        }
-        .english-text {
-            height: 10vw;
-            overflow: scroll;
-            font-size: 1.8rem;
-            text-align: left;
-            margin-bottom: 2vw;
-        }
-        hr {
-            border-top: 1px solid #ccc;
-            border-bottom: 1px solid #fff;
-            margin-bottom: 2vw;
-        }
-        .result-box {
-            height: 14vw;
-            overflow: scroll;
-            margin-bottom: 2vw;
-
-            p {
-                font-size: 1.6rem;
-                text-align: center;
-                margin-bottom: 0.5vw;
-            }
-            .standby {
-                height: 2vw;
-                font-style: italic;
-                color: $diactiveColor;
+            .modaal-title {
+                font-size: 2.8rem;
+                font-weight: 600;
                 margin-bottom: 2vw;
             }
+            .english-text {
+                height: 10vw;
+                overflow: scroll;
+                font-size: 1.8rem;
+                text-align: left;
+                margin-bottom: 2vw;
+            }
+            hr {
+                border-top: 1px solid #ccc;
+                border-bottom: 1px solid #fff;
+                margin-bottom: 2vw;
+            }
+            .result-box {
+                height: 14vw;
+                overflow: scroll;
+                margin-bottom: 2vw;
+
+                p {
+                    font-size: 1.6rem;
+                    text-align: center;
+                    margin-bottom: 0.5vw;
+                }
+                .standby {
+                    height: 2vw;
+                    font-style: italic;
+                    color: $diactiveColor;
+                    margin-bottom: 2vw;
+                }
+            }
+
+            .recording-box {
+                // .recording-btn {
+                //     width: 39px;
+                //     height: 39px;
+                //     border: 1px solid #000;
+                //     border-radius: 50%;
+                //     padding: 2px;
+                // }
+                .btn-notes {
+                    // height: 3vw;
+                    text-align: center;
+                    // margin: 0;
+                }
+            }
         }
 
-        .recording-box {
-            // .recording-btn {
-            //     width: 39px;
-            //     height: 39px;
-            //     border: 1px solid #000;
-            //     border-radius: 50%;
-            //     padding: 2px;
-            // }
-            .btn-notes {
-                // height: 3vw;
-                text-align: center;
-                // margin: 0;
+        .diary-edit-modaal {
+            .modaal-title {
+                // color: red;
             }
         }
     }

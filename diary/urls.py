@@ -14,4 +14,5 @@ urlpatterns = [
     path("sort_diaries/", views.sort_diaries, name="sort"),
     path("filter_diaries/", views.filter_diaries, name="filter"),
     path('update_check_status/<int:diary_id>/', views.update_check_status, name='update_check_status'),
+    path("diary_edit/", views.diary_edit, name="diary_edit"),
 ]

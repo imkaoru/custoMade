@@ -20,6 +20,13 @@ function previewImage(obj) {
     });
     fileReader.readAsDataURL(obj.files[0]);
 }
+function editPreviewImage(obj, count) {
+    var fileReader = new FileReader();
+    fileReader.onload = (function() {
+        document.getElementById('preview' + count).src = fileReader.result;
+    });
+    fileReader.readAsDataURL(obj.files[0]);
+}
 //////////////////// /index.html
 
 
@@ -48,6 +55,7 @@ function textToSpeech(count) {
     }
 }
 
+
 // モーダルウィンドウ
 $(".speechToText").modaal({
 	overlay_close:true, //モーダル背景クリック時に閉じるか
@@ -58,6 +66,17 @@ $(".speechToText").modaal({
 		$('html').css('overflow-y','scroll'); /*縦スクロールバーを出す*/
 	}
 });
+
+$(".diary-edit").modaal({
+	overlay_close:false, //モーダル背景クリック時に閉じるか
+	before_open:function(){
+		$('html').css('overflow-y','hidden');
+	},
+	after_close:function(){
+		$('html').css('overflow-y','scroll');
+	}
+});
+
 
 // 音声認識
 SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
@@ -123,6 +142,7 @@ function speechToText(count) {
             break;
     }
 }
+
 
 // アコーディオンエリア
 // 必要に応じて、アコーディオン開いた時にその他全てのアコーディオンを閉じる処理を追加する

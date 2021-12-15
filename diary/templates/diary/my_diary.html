@@ -139,6 +139,51 @@
                 </div>
             </div>
         </section>
+
+        <section id="diary-edit{{ forloop.counter }}" class="hide-area">
+            <div class="diary-edit-modaal">
+                <h2 class="modaal-title">Edit or Delete...</h2>
+                {% comment %} <p class="english-text">{{ diary.english_text }}</p> {% endcomment %}
+
+                <form action="{% url 'diary:diary_edit' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <div>
+                        <label for="title{{ forloop.counter }}">title</label>
+                        <input type="text" id="title{{ forloop.counter }}" name="title" maxlength="64" spellcheck="true" required value="{{diary.title}}">
+                    </div>
+                    <div>
+                        <label for="english_text{{ forloop.counter }}">english text</label>
+                        <textarea rows="5" id="english_text{{ forloop.counter }}" name="english_text" required>{{diary.english_text}}</textarea>
+                    </div>
+                    <div>
+                        <label for="japanese_translation{{ forloop.counter }}">japanese translation</label>
+                        <textarea rows="5" id="japanese_translation{{ forloop.counter }}" name="japanese_translation" required>{{diary.japanese_translation}}</textarea>
+                    </div>
+                    <div>
+                        <label for="image{{ forloop.counter }}">photo</label>
+                        <label class="image-btn">
+                            select file
+                            <input type="file" id="image{{ forloop.counter }}" name="image" accept="image/*" onchange="editPreviewImage(this, {{ forloop.counter }});">
+                        </label>
+                    </div>
+                    <img id="preview{{ forloop.counter }}" class="preview"></img>
+
+                    <input type="hidden" name="date" value="{{diary.date}}">
+
+                    <div class="submit-box">
+                        <ul>
+                            <li>
+                                <a href="{% url 'diary:my_diary' %}" class="cancel-btn">cancel</a>
+                            </li>
+                            <li>
+                                <input type="submit" class="update-btn" name="update-btn" value="update">
+                            </li>
+                        </ul>
+                        <input type="submit" class="delete-btn" value="delete">
+                    </div>
+                </form>
+            </div>
+        </section>
     {% endfor %}
     {% else %}
     <div class="no-diary">

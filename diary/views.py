@@ -252,4 +252,28 @@ def update_check_status(request, diary_id):
     count.save()
 
     return redirect('diary:my_diary')
+
+
+# 現状いくつかの問題がある(詳細はGoogleDocument)
+@login_required
+def diary_edit(request):
+    if (request.method == "POST"):
+        user=request.user
+        # target_date=request.POST.get('date')
+        target_date=datetime.strptime(request.POST.get('date'), '%b. %d, %Y') #'Dec. 7, 2021'
+        diary = Diary.objects.filter(user=user, date=target_date).first()
+
+        if 'update-btn' in request.POST:
+            form = DiaryForm(request.POST, request.FILES, instance=diary)
+            if form.is_valid():
+                form.save()
+
+            Diary.objects.filter(user=user, date=target_date).update(
+                title=request.POST.get('title'),
+                english_text=request.POST.get('english_text'),
+                japanese_translation=request.POST.get('japanese_translation'),
+            )
+        else:
+            diary.delete()
+    return redirect('diary:my_diary')
 #################### my_diary.html
