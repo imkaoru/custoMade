@@ -153,20 +153,22 @@
                     </div>
                     <div>
                         <label for="english_text{{ forloop.counter }}">english text</label>
-                        <textarea rows="5" id="english_text{{ forloop.counter }}" name="english_text" required>{{diary.english_text}}</textarea>
+                        <textarea rows="3" id="english_text{{ forloop.counter }}" name="english_text" required>{{diary.english_text}}</textarea>
                     </div>
                     <div>
                         <label for="japanese_translation{{ forloop.counter }}">japanese translation</label>
-                        <textarea rows="5" id="japanese_translation{{ forloop.counter }}" name="japanese_translation" required>{{diary.japanese_translation}}</textarea>
+                        <textarea rows="3" id="japanese_translation{{ forloop.counter }}" name="japanese_translation" required>{{diary.japanese_translation}}</textarea>
                     </div>
-                    <div>
+                    <div class="select-file-box">
                         <label for="image{{ forloop.counter }}">photo</label>
                         <label class="image-btn">
                             select file
                             <input type="file" id="image{{ forloop.counter }}" name="image" accept="image/*" onchange="editPreviewImage(this, {{ forloop.counter }});">
                         </label>
                     </div>
-                    <img id="preview{{ forloop.counter }}" class="preview"></img>
+                    <div class="preview">
+                        <img id="preview{{ forloop.counter }}"></img>
+                    </div>
 
                     <input type="hidden" name="date" value="{{diary.date}}">
 

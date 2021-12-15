@@ -224,13 +224,13 @@ nav {
                 min-width: 100px;
                 background: #88acea; //後ほど変更
                 color: #FFF;
-                font-size: 2rem;
+                font-size: 2.4rem;
                 // line-height: 1.7; /* 行間 */
                 border-radius: 6px;
                 cursor: pointer; /* カーソルを指に */
                 text-align: center;
                 margin: 0;
-                padding: 8px; /* 文字まわりの余白 */
+                padding: 4px; /* 文字まわりの余白 */
 
                 input {
                     display: none;
@@ -256,11 +256,11 @@ nav {
                 min-width: 100px;
                 background: #88acea; //後ほど変更
                 color: #FFF;
-                font-size: 2rem;
+                font-size: 2.4rem;
                 // line-height: 1.7;
                 border-radius: 6px;
                 margin: 0;
-                padding: 6px;
+                padding: 4px;
             }
         }
 
@@ -319,14 +319,14 @@ nav {
             min-width: 200px;
             background: #668ad8; //後ほど変更
             color: #FFF;
-            font-size: 2.2rem;
+            font-size: 2.6rem;
             font-weight: 600;
             // line-height: 1.7;
             border: dashed 2px #FFF;
             border-radius: 6px;
             box-shadow: 0px 0px 0px 2px #668ad8;
             margin: 0 auto;
-            padding: 6px;
+            padding: 4px;
         }
     }
 }
@@ -411,47 +411,66 @@ footer {
 
                 .function-box {
                     display: flex;
-                    flex-wrap: wrap;
                     justify-content: space-between;
 
                     .left-function li {
-                        display: inline-block;
+                        display: inline;
 
                         &:first-of-type {
                             margin: 0 1.5vw 0 0.5vw;
                         }
                     }
 
-                    .right-function li form {
-                        label {
-                            .checkbox {
-                                display: none;
+                    .right-function {
+                        display: flex;
+                        align-items: center;
 
-                                &:checked {
-                                    ~ i.far.fa-square {
+                        li {
+                            &:first-of-type {
+                                margin-right: 1vw;
+                            }
+
+                            form {
+                                label {
+                                    .checkbox {
                                         display: none;
+
+                                        &:checked {
+                                            ~ i.far.fa-square {
+                                                display: none;
+                                            }
+                                            ~ i.far.fa-check-square {
+                                                color: #7AA3CC;
+                                                display: inline;
+                                            }
+                                        }
                                     }
-                                    ~ i.far.fa-check-square {
-                                        color: #7AA3CC;
+                                    i.far.fa-square {
+                                        color: #c8c8c8;
                                         display: inline;
                                     }
+                                    i.far.fa-check-square {
+                                        display: none;
+                                    }
+                                    &:hover i.far {
+                                        color: #7AA3CC;
+                                    }
                                 }
+
+                                // input[type="submit"] {
+                                //     display: none;
+                                // }
                             }
-                            i.far.fa-square {
-                                color: #c8c8c8;
-                                display: inline;
-                            }
-                            i.far.fa-check-square {
-                                display: none;
-                            }
-                            &:hover i.far {
-                                color: #7AA3CC;
+
+                            .diary-edit {
+                                width: 36px;
+                                color: $fontColor;
+                                font-size: 2.2rem;
+                                border: solid 1px #DDD;
+                                border-radius: 4px;
+                                padding: 0 6px;
                             }
                         }
-
-                        // input[type="submit"] {
-                        //     display: none;
-                        // }
                     }
                 }
             }
@@ -557,8 +576,106 @@ footer {
         }
 
         .diary-edit-modaal {
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 1vw 5% 1vw;
+
             .modaal-title {
-                // color: red;
+                text-align: center;
+                margin-bottom: 0.5vw;
+            }
+
+            form {
+                div {
+                    margin-bottom: 2vw;
+
+                    label {
+                        font-size: 2rem;
+                    }
+                    input[type="text"],
+                    textarea {
+                        display: block;
+                        width: 100%;
+                        background: rgba(255, 255, 255, .8);
+                        border: 1px #fff solid;
+                        border-radius: 6px;
+                        color: $fontColor;
+                        padding: 5px 10px;
+                    }
+                }
+
+                .select-file-box {
+                    margin-bottom: 0.5vw;
+
+                    .image-btn {
+                        display: block;
+                        width: 20%;
+                        min-width: 80px;
+                        background: #88acea;
+                        color: #FFF;
+                        font-size: 2rem;
+                        border-radius: 6px;
+                        cursor: pointer;
+                        text-align: center;
+                        padding: 0 4px;
+
+                        input {
+                            display: none;
+                        }
+                    }
+                }
+                .preview {
+                    margin-bottom: 2vw;
+
+                    img {
+                        width: 33%;
+                    }
+                }
+
+                .submit-box {
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 0;
+
+                    ul {
+                        display: flex;
+                        align-items: center;
+
+                        li {
+                            &:first-of-type {
+                                margin-right: 1vw;
+                            }
+
+                            .cancel-btn {
+                                display: block;
+                                width: 18%;
+                                min-width: 72px;
+                                color: #000;
+                                font-size: 2.2rem;
+                                border-radius: 6px;
+                                border: 1px solid #ddd;
+                                padding: 0 6px;
+                            }
+                            .update-btn {
+                                width: 18%;
+                                min-width: 72px;
+                                background: #777;
+                                color: #FFF;
+                                font-size: 2.2rem;
+                                border-radius: 6px;
+                                padding: 0 6px;
+                            }
+                        }
+                    }
+                    .delete-btn {
+                        width: 18%;
+                        min-width: 72px;
+                        font-size: 2.2rem;
+                        border-radius: 6px;
+                        border: 1px solid #ddd;
+                        padding: 0 6px;
+                    }
+                }
             }
         }
     }
