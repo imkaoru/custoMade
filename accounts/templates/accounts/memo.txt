@@ -1,0 +1,110 @@
+layout.html--------------------
+<!DOCTYPE html>
+{% load static %}
+{% comment %} {% load django_bootstrap5 %} {% endcomment %}
+{% load sass_tags %}
+
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>custoMade</title>
+        <meta name="description" content="(現在準備中)" />
+        <link rel="icon" href="" sizes="16x16" type="image/png" />
+        <link rel="apple-touch-icon-precomposed" href="" />
+        <link rel='stylesheet' href='https://unpkg.com/ress/dist/ress.min.css'>
+        <link rel="stylesheet" href="https://use.typekit.net/kqm8xlk.css">
+        <link rel="stylesheet" href="https://use.typekit.net/kqm8xlk.css">
+        {% comment %} <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> {% endcomment %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        {% block extraheader %}{% endblock %}
+        {% comment %} <link rel="stylesheet" href="{% static 'accounts/styles.css' %}"> {% endcomment %}
+        <link rel="stylesheet" href="{% sass_src 'accounts/sass/styles.scss' %}">
+        {% comment %} {% bootstrap_css %} {% endcomment %}
+        {% comment %} {% bootstrap_javascript %} {% endcomment %}
+    </head>
+
+    <body>
+        <header>
+            <div class="container">
+                {% comment %} <nav class="navbar navbar-expand flex-md-row navbar-dark bg-dark"> {% endcomment %}
+                    {% comment %} <div class="container justify-content-between"> {% endcomment %}
+                        {% comment %} <a href="{% url 'accounts:login' %}" class="navbar-brand">custoMade</a> {% endcomment %}
+                        {% comment %} <a href="{% url 'accounts:login' %}">custoMade</a> {% endcomment %}
+                        <p>custoMade</p>
+
+                        {% comment %} <ul class="navbar-nav mr-md-2"> {% endcomment %}
+                        <ul>
+                            {% comment %} <li class="nav-item"> {% endcomment %}
+                            <li>
+                                {% comment %} <a class="nav-link" href="{% url 'accounts:login' %}">login</a> {% endcomment %}
+                                <a href="{% url 'accounts:login' %}">login</a>
+                            </li>
+                            {% comment %} <li class="nav-item"> {% endcomment %}
+                            <li>
+                                {% comment %} <a class="nav-link" href="{% url 'accounts:signup' %}">sign up</a> {% endcomment %}
+                                <a href="{% url 'accounts:signup' %}">sign up</a>
+                            </li>
+                        </ul>
+                    {% comment %} </div> {% endcomment %}
+                {% comment %} </nav> {% endcomment %}
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+                {% block main %}{% endblock %}
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p><small>©︎ imkaoru 2021</small></p>
+            </div>
+        </footer>
+    </body>
+</html>
+--------------------
+
+
+login.html--------------------
+{% extends "accounts/layout.html" %}
+{% comment %} {% load django_bootstrap5 %} {% endcomment %}
+
+{% block extraheader %}{% endblock %}
+
+{% block main %}
+    <h2>ログイン</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{next}}" /> {% comment %} nextURLパラメーターが指定されている処理に対応 {% endcomment %}
+
+        {% comment %} {% bootstrap_form form %} {% endcomment %}
+        {{ form }}
+        {% comment %} {% bootstrap_button button_type="submit" content="Let me in!" %} {% endcomment %}
+        <input type="submit" value="投稿する">
+    </form>
+{% endblock %}
+-------------------
+
+
+signup.html--------------------
+{% extends "accounts/layout.html" %}
+{% comment %} {% load django_bootstrap5 %} {% endcomment %}
+
+{% block extraheader %}{% endblock %}
+
+{% block main %}
+<h2>会員登録</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    {% comment %} {% bootstrap_form form %} {% endcomment %}
+    {{ form }}
+    {% comment %} {% bootstrap_button button_type="submit" content="Register" %} {% endcomment %}
+    <input type="submit" value="投稿する">
+</form>
+{% endblock %}
+--------------------

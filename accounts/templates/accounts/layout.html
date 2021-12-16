@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 {% load static %}
-{% load django_bootstrap5 %}
 {% load sass_tags %}
 
 <html lang="ja">
@@ -14,43 +13,35 @@
         <link rel='stylesheet' href='https://unpkg.com/ress/dist/ress.min.css'>
         <link rel="stylesheet" href="https://use.typekit.net/kqm8xlk.css">
         <link rel="stylesheet" href="https://use.typekit.net/kqm8xlk.css">
-        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-        {% comment %} <link rel="stylesheet" href="{% static 'accounts/styles.css' %}"> {% endcomment %}
-        <link rel="stylesheet" href="{% sass_src 'accounts/sass/styles.scss' %}">
-        {% bootstrap_css %}
-        {% bootstrap_javascript %}
+        {% comment %} <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> {% endcomment %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         {% block extraheader %}{% endblock %}
+        {% comment %} <link rel="stylesheet" href="{% static 'diary/styles.css' %}"> {% endcomment %}
+        <link rel="stylesheet" href="{% sass_src 'accounts/sass/styles.scss' %}">
     </head>
 
     <body>
         <header>
             <div class="container">
-                <nav class="navbar navbar-expand flex-md-row navbar-dark bg-dark">
-                    <div class="justify-content-between"> {% comment %} containerクラス削除 {% endcomment %}
-                        <a href="{% url 'accounts:login' %}" class="navbar-brand">custoMade</a>
+                <nav>
+                    <p class="header-logo">cust<span>M</span>ade</p>
 
-                        <ul class="navbar-nav mr-md-2">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'accounts:login' %}">login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'accounts:signup' %}">sign up</a>
-                            </li>
-                        </ul>
-                    </div>
+                    {% block nav-menu %}{% endblock %}
                 </nav>
             </div>
         </header>
 
         <main>
             <div class="container">
-                {% block main %}{% endblock %}
+                <div class="accounts-container">
+                    {% block main %}{% endblock %}
+                </div>
             </div>
         </main>
 
         <footer>
             <div class="container">
-                <p><small>©︎ imkaoru, chiken3 2021</small></p>
+                <p class="footer-text"><small>©︎ imkaoru 2021</small></p>
             </div>
         </footer>
     </body>

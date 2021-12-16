@@ -1,16 +1,37 @@
 {% extends "accounts/layout.html" %}
-{% load django_bootstrap5 %}
 
 {% block extraheader %}{% endblock %}
 
+{% block nav-menu %}
+<ul class="nav-menu">
+    <li>
+        <a href="{% url 'accounts:signup' %}">sign up</a>
+    </li>
+</ul>
+{% endblock %}
+
 {% block main %}
-    <h2>ログイン</h2>
+<h1>Login</h1>
 
-    <form method="post">
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{next}}" /> {% comment %} nextURLパラメーターが指定されている処理に対応 {% endcomment %}
+<form method="post">
+{% csrf_token %}
+    <input type="hidden" name="next" value="{{next}}" /> {% comment %} nextURLパラメーターが指定されている処理に対応 {% endcomment %}
 
-        {% bootstrap_form form %}
-        {% bootstrap_button button_type="submit" content="Let me in!" %}
-    </form>
+    {% comment %} {{ form.as_p }} {% endcomment %}
+
+    <div class="form-item">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" maxlength="64" autocomplete="off" required>
+    </div>
+    <div class="form-item">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" maxlength="64" required>
+    </div>
+    <div class="btn-wrap">
+        <input type="submit" class="button" value="Let me in!">
+    </div>
+</form>
+{% comment %} <div class="accounts-footer">
+    <p><a href="#">Forgot Password?</a></p>
+</div> {% endcomment %}
 {% endblock %}

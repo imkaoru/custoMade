@@ -1,15 +1,36 @@
 {% extends "accounts/layout.html" %}
-{% load django_bootstrap5 %}
 
 {% block extraheader %}{% endblock %}
 
+{% block nav-menu %}
+<ul class="nav-menu">
+    <li>
+        <a href="{% url 'accounts:login' %}">login</a>
+    </li>
+</ul>
+{% endblock %}
+
 {% block main %}
-<h2>会員登録</h2>
+<h1>Sign Up</h1>
 
 <form method="post">
-    {% csrf_token %}
+{% csrf_token %}
+    {% comment %} {{ form.as_p }} {% endcomment %}
 
-    {% bootstrap_form form %}
-    {% bootstrap_button button_type="submit" content="Register" %}
+    <div class="form-item">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" maxlength="64" autocomplete="off" required>
+    </div>
+    <div class="form-item">
+        <label for="password1">Password</label>
+        <input type="password" id="password1" name="password1" maxlength="64" required>
+    </div>
+    <div class="form-item">
+        <label for="password2">Confirm Password</label>
+        <input type="password" id="password2" name="password2" maxlength="64" required>
+    </div>
+    <div class="btn-wrap">
+        <input type="submit" class="button" value="Register">
+    </div>
 </form>
 {% endblock %}

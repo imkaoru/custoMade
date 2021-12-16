@@ -1,9 +1,14 @@
 @charset "UTF-8";
 
 // イメージ: 青と白の世界
-$baseColor: #FDFDFB;
-$mainColor: #67A5DA;
-$accentColor: #FBE4E2;
+$baseColor: #FDFDFB; //Sacred White
+$mainColor: #67A5DA; //Blue Eyes
+$accentColor: #0065B2; //Greek Blue
+$accentColor2: #FBE4E2; //Morning Wall
+$lightGrayish: #E5EAEB; //Limestone
+$grayish: #B8C2C8; //Stone Pavement
+$lightBrownish: #C8BCA0; //Parthenon
+$brownish: #C19969; //Acropolis
 
 $fontColor: #707070;
 $diactiveColor: #909090;
@@ -13,27 +18,192 @@ $lineColor: #e0e0e0;
 html {
     font-size: 62.5%;
     font-family: futura-pt, sans-serif;
+    font-weight: 400;
     color: $fontColor;
 }
 
 body {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    background-color: $lightGrayish;
+    word-break: break-all;
+    margin: 0;
+    // overflow: hidden;
 }
 
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
+// header, main, footer {
+//     margin-bottom: 2vw;
+// }
+header {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    // background-color: $baseColor;
+    background-color: #FFF;
+    border-bottom: 2px solid $lineColor;
+}
+main {
+    margin: 12vw auto 4vw;
+}
+footer {
+    margin-bottom: 2vw;
+}
+
+.container {
+    padding: 0 2vw;
+}
+
 a {
     text-decoration: none;
     color: $diactiveColor;
-    margin: 0 10px;
-
-    &:hover {
-        color: $fontColor;
-    }
+    // &:hover {
+    //     color: $fontColor;
+    // }
 }
 
 ul {
     list-style-type: none;
+}
+
+::placeholder {
+    color: $diactiveColor;
+    font-weight: 300;
+}
+
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 2vw 0 4vw;
+
+    .header-logo {
+        color: #606060;
+        font-size: 4rem;
+        font-family: marydale, sans-serif;
+        font-weight: 900;
+
+        span {
+            // color: #87C5FA; //$mainColor: #67A5DA;
+            // color: #40A5F2; //$accentColor: #0065B2;
+            color: #8AB3DC; //チェックボックスに仮付けしてた色: #7AA3CC;
+        }
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-right: 3vw;
+
+            a {
+                color: $diactiveColor;
+                font-size: 2rem;
+                font-weight: 500;
+
+                position: relative;
+                &::after {
+                    content: '';
+                    /*絶対配置で線の位置を決める*/
+                    position: absolute;
+                    bottom: -20%;
+                    left: 10%;
+                    /*線の形状*/
+                    width: 80%;
+                    height: 2px;
+                    background: $mainColor;
+                    /*アニメーションの指定*/
+                    transition: all .2s;
+                    transform: scale(0, 1);/*X方向0、Y方向1*/
+                    transform-origin: center top;/*上部中央基点*/
+                }
+                &:hover {
+                    color: $fontColor;
+                    &::after {
+                        transform: scale(1, 1);/*X方向にスケール拡大*/
+                    }
+                }
+            }
+        }
+    }
+}
+
+.footer-text {
+    font-size: 2.2rem;
+    text-align: center;
+}
+
+
+.accounts-container {
+    background: $baseColor;
+    margin: 0 auto;
+    padding: 2vw 3vw 3vw;
+    max-width: 370px;
+
+    h1 {
+        font-size: 3.4rem;
+        text-align: center;
+        // padding: 1em 0;
+        margin-bottom: 2vw;
+    }
+
+    form {
+        // padding: 0 1.5em;
+
+        .form-item {
+            margin-bottom: 3vw;
+            width: 100%;
+
+            label {
+                font-size: 1.8rem;
+            }
+            input {
+                background: $baseColor;
+                border: none;
+                border-bottom: 2px solid $lightGrayish;
+                color: $fontColor;
+                font-size: 2.2rem;
+                height: 50px;
+                transition: border-color 0.3s;
+                width: 100%;
+
+                &:focus {
+                    border-bottom: 2px solid $grayish;
+                    outline: none;
+                }
+            }
+        }
+
+        .btn-wrap {
+            margin: 0 auto;
+            width: 80%;
+
+            .button {
+                background: #FBB4B2; //$accentColor2: #FBE4E2;
+                border: none;
+                color: $baseColor;
+                cursor: pointer;
+                height: 50px;
+                font-size: 3rem;
+                letter-spacing: 0.05em;
+                text-align: center;
+                text-transform: uppercase;
+                transition: background 0.3s ease-in-out;
+                width: 100%;
+
+                &:hover {
+                    background: #FB8482; //$accentColor2: #FBE4E2;
+                }
+            }
+        }
+    }
 }
