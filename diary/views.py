@@ -6,7 +6,9 @@ from django.contrib.auth.decorators import login_required
 
 from datetime import date, datetime
 import requests
+# import random
 
+# from django.contrib.auth.models import User
 from .models import Diary, Count, BaseManager
 from .forms import DiaryForm
 
@@ -167,6 +169,7 @@ def keep_english_text(request):
 #################### my_diary.html
 sort_state = 0
 filter_state = 0
+random_state = 0
 
 
 @login_required
@@ -180,24 +183,31 @@ def my_diary(request):
 
     global sort_state
     global filter_state
-    if sort_state == 0 and filter_state == 0:
-        diaries = Diary.objects.filter(
-            user=request.user,
-        ).order_by('date').reverse()
-    elif sort_state == 0 and filter_state == 1:
-        diaries = Diary.objects.filter(
-            user=request.user,
-            is_completed="unchecked",
-        ).order_by('date').reverse()
-    elif sort_state == 1 and filter_state == 0:
-        diaries = Diary.objects.filter(
-            user=request.user,
-        ).order_by('date')
+    global random_state
+    if random_state == 0:
+        if sort_state == 0 and filter_state == 0:
+            diaries = Diary.objects.filter(
+                user=request.user,
+            ).order_by('date').reverse()
+        elif sort_state == 0 and filter_state == 1:
+            diaries = Diary.objects.filter(
+                user=request.user,
+                is_completed="unchecked",
+            ).order_by('date').reverse()
+        elif sort_state == 1 and filter_state == 0:
+            diaries = Diary.objects.filter(
+                user=request.user,
+            ).order_by('date')
+        else:
+            diaries = Diary.objects.filter(
+                user=request.user,
+                is_completed="unchecked",
+            ).order_by('date')
     else:
         diaries = Diary.objects.filter(
             user=request.user,
             is_completed="unchecked",
-        ).order_by('date')
+        ).order_by('?')[0:3]
 
     # diaries = Diary.objects.filter(user=request.user)
     count = Count.objects.filter(user=request.user).first()
@@ -209,6 +219,7 @@ def my_diary(request):
         "count": count,
         "sort_state": sort_state,
         "filter_state": filter_state,
+        "random_state": random_state,
     }
     return render(request, "diary/my_diary.html", context)
 
@@ -230,6 +241,16 @@ def filter_diaries(request):
         filter_state = 1
     else:
         filter_state = 0
+    return redirect('diary:my_diary')
+
+
+@login_required
+def random_diaries(request):
+    global random_state
+    if random_state == 0:
+        random_state = 1
+    else:
+        random_state = 0
     return redirect('diary:my_diary')
 
 

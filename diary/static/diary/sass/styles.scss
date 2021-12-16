@@ -168,9 +168,10 @@ nav {
 
         ul li {
             display: inline-block;
+            margin-right: 2vw;
 
-            &:first-of-type {
-                margin-right: 2vw;
+            .random-btn {
+                margin-right: 0;
             }
         }
     }

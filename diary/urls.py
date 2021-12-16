@@ -13,6 +13,7 @@ urlpatterns = [
     path("my_diary/", views.my_diary, name="my_diary"),
     path("sort_diaries/", views.sort_diaries, name="sort"),
     path("filter_diaries/", views.filter_diaries, name="filter"),
+    path("random_diaries/", views.random_diaries, name="random"),
     path('update_check_status/<int:diary_id>/', views.update_check_status, name='update_check_status'),
     path("diary_edit/", views.diary_edit, name="diary_edit"),
 ]

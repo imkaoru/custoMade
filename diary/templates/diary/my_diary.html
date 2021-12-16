@@ -15,6 +15,7 @@
     <div>
         <p>Diary: {{ count.diaries }} &nbsp;&nbsp;&nbsp;Completed: {{ count.completed_diaries }}</p>
         <ul>
+            {% if random_state == 0 %}
             <li>
                 <a href="{% url 'diary:sort' %}">
                     {% if sort_state == 0 %}
@@ -35,6 +36,18 @@
                     {% endif %}
                 </a>
             </li>
+            <li class="random-btn">
+                <a href="{% url 'diary:random' %}">
+                    <i class="fas fa-random fa-2x diactive"></i>
+                </a>
+            </li>
+            {% else %}
+            <li class="random-btn">
+                <a href="{% url 'diary:random' %}">
+                    <i class="fas fa-random fa-2x active"></i>
+                </a>
+            </li>
+            {% endif %}
         </ul>
     </div>
 </div>
