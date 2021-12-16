@@ -18,10 +18,10 @@
             <li>
                 <a href="{% url 'diary:sort' %}">
                     {% if sort_state == 0 %}
-                    <i class="fas fa-sort-amount-up fa-2x"></i>
+                    <i class="fas fa-sort-amount-up fa-2x diactive"></i>
                     {% comment %} <i class="fas fa-sort-numeric-up-alt fa-2x"></i> {% endcomment %}
                     {% else %}
-                    <i class="fas fa-sort-amount-down-alt fa-2x"></i>
+                    <i class="fas fa-sort-amount-down-alt fa-2x diactive"></i>
                     {% comment %} <i class="fas fa-sort-numeric-down fa-2x"></i> {% endcomment %}
                     {% endif %}
                 </a>
@@ -71,13 +71,13 @@
                             <li>
                                 {% comment %} こっからモーダルウィンドーに飛ばしたい、{% url 'pronunciation' diary.id %} みたいな感じか {% endcomment %}
                                 <a href="#speechToText{{ forloop.counter }}" class="speechToText">
-                                    <i class="fas fa-microphone fa-2x"></i>
+                                    <i class="fas fa-microphone fa-2x diactive"></i>
                                 </a>
                             </li>
                             <li>
                                 <button onclick="textToSpeech({{ forloop.counter }});">
                                     {% comment %} 後ほど、押すたびにアイコンを切り替える処理を加える {% endcomment %}
-                                    <i class="fas fa-volume-up fa-2x"></i>
+                                    <i class="fas fa-volume-up fa-2x active"></i>
                                     {% comment %} <i class="far fa-stop-circle"></i> {% endcomment %}
                                 </button>
                             </li>
@@ -111,7 +111,7 @@
                 <section>
                     <div class="accordion-btn">
                         {% comment %} 最初のみここから画面に表示 {% endcomment %}
-                        <i class="fas fa-plus fa-2x"></i>
+                        <i class="fas fa-plus fa-2x active"></i>
                     </div>
                     <div class="accordion-box">
                         <p>{{ diary.japanese_translation }}</p>
@@ -133,7 +133,7 @@
                 <div class="recording-box">
                     <button id="recording-btn{{ forloop.counter }}" class="recording-btn" onclick="speechToText({{ forloop.counter }});">
                         {% comment %} 最初のみここから画面に表示 {% endcomment %}
-                        <i class="fas fa-microphone fa-2x"></i>
+                        <i class="fas fa-microphone fa-2x active"></i>
                     </button>
                     <p class="btn-notes"><small>Recording start/stop</small></p>
                 </div>
@@ -194,6 +194,12 @@
     </div>
     {% endif %}
 </div> {% comment %} items {% endcomment %}
+{% endblock %}
+
+{% block footer %}
+	{% comment %} {% if diary_step == 5 %} {% endcomment %}
+	<p class="footer-text"><small>©︎ imkaoru 2021</small></p>
+	{% comment %} {% endif %} {% endcomment %}
 {% endblock %}
 
 

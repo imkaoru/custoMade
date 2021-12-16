@@ -160,14 +160,16 @@
 				</div>
 			</div>
 
-			<div>
+			<div class="select-file-box">
 				<label for="image">Add a photo.</label>
 				<label class="image-btn">
 					select file
 					<input type="file" id="image" name="image" accept="image/*" onchange="previewImage(this);">
 				</label>
 			</div>
-			<img id="preview" class="preview"></img>
+			<div class="preview">
+				<img id="preview"></img>
+			</div>
 
 			<input type="submit" class="keep-btn" value="Done!">
 		</div>

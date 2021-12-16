@@ -105,8 +105,8 @@ recognition.onresult = (event) => {
 
         if (event.results[i].isFinal) {
             finalTranscript = transcript;
-            preResult.innerHTML = finalTranscript;
-            p.innerText = finalTranscript;
+            preResult.innerHTML = '<p class="onAir">' + finalTranscript + '</p>';
+            p.innerHTML = '<p class="onAir">' + finalTranscript + '</p>';
         } else {
             interimTranscript = transcript;
             preResult.innerHTML = '<p class="standby">' + interimTranscript + '</p>';
@@ -115,7 +115,7 @@ recognition.onresult = (event) => {
 
     recognition.onaudioend = () => {
         switchOverR = 0;
-        recordingBtn.innerHTML = '<i class="fas fa-microphone fa-2x"></i>';
+        recordingBtn.innerHTML = '<i class="fas fa-microphone fa-2x active"></i>';
         resultDiv.innerHTML = '<p class="standby">Speak into the microphone. (English)</p>';
     }
 }
@@ -132,12 +132,12 @@ function speechToText(count) {
         // recordingBtn.classList.add("foo");
         case 0:
             switchOverR = 1;
-            recordingBtn.innerHTML = '<i class="far fa-stop-circle fa-2x"></i>';
+            recordingBtn.innerHTML = '<i class="far fa-stop-circle fa-2x active"></i>';
             recognition.start();
             break;
         case 1:
             switchOverR = 0;
-            recordingBtn.innerHTML = '<i class="fas fa-microphone fa-2x"></i>';
+            recordingBtn.innerHTML = '<i class="fas fa-microphone fa-2x active"></i>';
             recognition.stop();
             break;
     }
@@ -154,10 +154,10 @@ $('.accordion-btn').on('click', function() {
 
     if ($(this).hasClass('close')) {
 		$(this).removeClass('close');
-        $(this).html( '<i class="fas fa-plus fa-2x"></i>' );
+        $(this).html( '<i class="fas fa-plus fa-2x active"></i>' );
 	} else {
 		$(this).addClass('close');
-        $(this).html( '<i class="fas fa-times fa-2x"></i>' );
+        $(this).html( '<i class="fas fa-times fa-2x active"></i>' );
 	}
 });
 //////////////////// /my_diary.html
